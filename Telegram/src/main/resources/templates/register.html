@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .registration-form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .registration-form .form-title {
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="registration-form">
+    <div class="form-title">Registration</div>
+    <form action="/register" method="POST">
+        <!-- First Name -->
+        <div class="mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter your first name" required>
+        </div>
+        <!-- Last Name -->
+        <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter your last name" required>
+        </div>
+        <!-- Username -->
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
+            <div class="text-danger" th:if="${errorUserName != null}" th:text="${errorUserName}"></div>
+        </div>
+        <!-- Email -->
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <!-- Phone Number -->
+        <div class="mb-3">
+            <label for="phoneNumber" class="form-label">Phone Number</label>
+            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number" required>
+            <div class="text-danger" th:if="${errorPhoneNum != null}" th:text="${errorPhoneNum}"></div>
+        </div>
+        <!-- Password -->
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
+        </div>
+        <!-- Submit and Login Buttons -->
+        <div class="btn-container">
+            <a href="/login" class="btn btn-secondary">Login</a>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+    </form>
+</div>
+</body>
+
+</html>
